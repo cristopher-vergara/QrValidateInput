@@ -3,15 +3,14 @@ import com.copitovalidator.implementation.ValidateImpl;
 import com.copitovalidator.model.QrInit;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.HashMap;
+import java.util.Map;
 
 @RestController
-@RequestMapping("recieve/json")
+@RequestMapping("/")
 
 public class ValidateController {
 
@@ -24,4 +23,19 @@ public class ValidateController {
         return  ResponseEntity.ok().body(validateimpl.validateQR(qrInit)) ;
     }
 
+    @PostMapping("/kongpost")
+    public String postKong (){
+        String conpost =  "connected this is a post " ;
+        return conpost ;
+    }
+
+    @GetMapping("/kongget")
+    public Map<String, String> sayHello() {
+        HashMap<String, String> map = new HashMap<>();
+        map.put("key", "value");
+        map.put("foo", "bar");
+        map.put("aa", "bb");
+        return map;
+
+    }
 }
