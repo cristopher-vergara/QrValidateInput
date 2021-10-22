@@ -17,6 +17,7 @@ public class QrInit {
     @Size(min = 1 , max= 4)
 
     private String date ;
+
     private int phone ;
 
 

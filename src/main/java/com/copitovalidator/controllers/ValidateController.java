@@ -29,7 +29,6 @@ public class ValidateController {
     }
 
 
-
     @PostMapping("/kongpost")
     public String postKong (){
         String conpost =  "connected this is a post " ;
@@ -46,7 +45,6 @@ public class ValidateController {
 
     }
 
-
     @GetMapping(value = "/commerce/{static_qr_id}")
     //public List<Commerce> getCommerceByStatic_qr_id(@PathVariable(value ="static_qr_id") String static_qr_id)
     public Commerce getCommerceByStatic_qr_id(@PathVariable(value ="static_qr_id") String static_qr_id)
@@ -56,6 +54,14 @@ public class ValidateController {
         return returnJsonService.getCommerceByStatic_qr_id(static_qr_id);
 
     }
+
+
+
+
+
+
+
+
 
 
 

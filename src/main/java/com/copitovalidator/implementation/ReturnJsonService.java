@@ -36,8 +36,9 @@ public class ReturnJsonService {
 
     public Commerce getCommerceByStatic_qr_id(String static_qr_id){
      Commerce com = new Commerce() ;
+        int cont = 0 ;
        for (Commerce c : myListCommerce()){
-           int cont = 0 ;
+
            if(c.getStatic_qr_id().equals(static_qr_id)){
 
               com =  myListCommerce().get(cont);
