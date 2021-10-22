@@ -29,6 +29,7 @@ public class ValidateController {
     }
 
 
+
     @PostMapping("/kongpost")
     public String postKong (){
         String conpost =  "connected this is a post " ;
