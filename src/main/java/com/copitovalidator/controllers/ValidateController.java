@@ -28,6 +28,7 @@ public class ValidateController {
         return  ResponseEntity.ok().body(validateimpl.validateQR(qrInit)) ;
     }
 
+
     @PostMapping("/kongpost")
     public String postKong (){
         String conpost =  "connected this is a post " ;
