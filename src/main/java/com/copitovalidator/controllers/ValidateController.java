@@ -1,4 +1,5 @@
 package com.copitovalidator.controllers;
+import com.copitovalidator.implementation.MapJsonImpl;
 import com.copitovalidator.implementation.ReturnJsonService;
 import com.copitovalidator.implementation.ValidateImpl;
 import com.copitovalidator.model.Commerce;
@@ -8,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -21,6 +23,9 @@ public class ValidateController {
 
     @Autowired
     ReturnJsonService returnJsonService ;
+
+    @Autowired
+    MapJsonImpl mapJsonimpl ;
 
     @PostMapping("/qr")
     public ResponseEntity validateQR( @Valid @RequestBody QrInit qrInit) {
@@ -56,7 +61,21 @@ public class ValidateController {
     }
 
 
+    @PostMapping(value = "/mapjson")
+   // public ResponseEntity<Map> mapjsonInput(@RequestBody Map<String , String>  QRStaticRequest)
+    public String mapjsonInput(@RequestBody Map<String , String>  QRStaticRequest) throws IOException {
 
+        mapJsonimpl.ValidateMap(QRStaticRequest);
+        System.out.println("Input data: "+QRStaticRequest.toString());
+
+        return "ok" ;
+
+        /*
+        Map response = new HashMap<>();
+        response.put("message", "input received");
+        */
+
+    }
 
 
 
