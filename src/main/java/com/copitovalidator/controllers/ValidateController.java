@@ -1,6 +1,7 @@
 package com.copitovalidator.controllers;
 import com.copitovalidator.implementation.MapJsonImpl;
 import com.copitovalidator.implementation.ReturnJsonService;
+import com.copitovalidator.implementation.ValidateCuit;
 import com.copitovalidator.implementation.ValidateImpl;
 import com.copitovalidator.model.Commerce;
 import com.copitovalidator.model.QrInit;
@@ -9,6 +10,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -26,6 +30,9 @@ public class ValidateController {
 
     @Autowired
     MapJsonImpl mapJsonimpl ;
+
+    @Autowired
+    ValidateCuit validateCuit ;
 
     @PostMapping("/qr")
     public ResponseEntity validateQR( @Valid @RequestBody QrInit qrInit) {
@@ -78,10 +85,18 @@ public class ValidateController {
     }
 
 
+    @PostMapping(value = "/validacuit/{cuit}")
+    public boolean validatecuit(@PathVariable
+                                @NotNull(message = "NotNull")
+                                @NotEmpty(message = "NotEmpty")
+                                @Pattern(regexp = "^[0-9-]{13}$")
+                                String cuit){
 
 
 
+       return validateCuit.validatecuit(cuit) ;
 
+    }
 
 
 }
